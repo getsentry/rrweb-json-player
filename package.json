@@ -1,0 +1,23 @@
+{
+  "name": "rrweb-json-player",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "now": "^17.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getsentry/rrweb-json-player.git"
+  },
+  "author": "David Cramer <dcramer@gmail.com> (https://github.com/dcramer)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/getsentry/rrweb-json-player/issues"
+  },
+  "homepage": "https://github.com/getsentry/rrweb-json-player#readme"
+}
