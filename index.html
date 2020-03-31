@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/rrweb-player@latest/dist/style.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/rrweb-player@latest/dist/index.js"></script>
+        <script>
+        function init() {
+            var el = document.getElementById("file");
+            el.addEventListener("change", function() { handleFiles(this.files); }, false);
+        }
+
+        function handleFiles(files) {
+            let reader = new FileReader();
+            reader.onload = function() {
+                var payload = JSON.parse(reader.result);
+                executeEvents(payload);
+            }
+            reader.onerror = function() {
+                console.error(reader.error);
+            };
+            reader.readAsText(files[0]);
+        }
+
+
+        function executeEvents(payload) {
+            var node = document.getElementById('rrweb');
+            while (node.firstChild) {
+                node.removeChild(node.firstChild);
+            }
+
+            new rrwebPlayer({
+                target: node,
+                data: {
+                    events: payload.events,
+                    autoPlay: true,
+                },
+            });
+        }
+        </script>
+    </head>
+    <body style="margin: 20px">
+    <form onSubmit="event.preventDefault();" style="margin: 0 0 20px;">
+        <label for="file">JSON data (from rrweb.json):</label>
+        <input type="file" id="file" />
+    </form>
+    <div id="rrweb"></div>
+    <script>init();</script>
+</html>
